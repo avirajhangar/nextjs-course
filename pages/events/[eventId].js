@@ -20,7 +20,7 @@ function EventDetail() {
     <Fragment>
       <EventSummary summary={event.title} />
       <EventLogistics
-        data={event.date}
+        date={event.date}
         address={event.location}
         image={event.image}
         imageAlt={event.title}
