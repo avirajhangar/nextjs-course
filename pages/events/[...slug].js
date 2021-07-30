@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import EventList from "../../components/events/event-list";
 import useSWR from "swr";
 import { useRouter } from "next/router";
-
+import { Fragment } from "react";
+import Head from "next/head";
 function FilteredEventsPages() {
   const router = useRouter();
 
@@ -61,7 +62,15 @@ function FilteredEventsPages() {
     return <p>No events founds!</p>;
   }
 
-  return <EventList items={filteredEvents} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Filtered Pages</title>
+        <meta name="description" content="This page is filtered events pages" />
+      </Head>
+      <EventList items={filteredEvents} />
+    </Fragment>
+  );
 }
 
 // export async function getServerSideProps(context) {

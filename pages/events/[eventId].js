@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { getEventByID, getAllEvents } from "../../helpers/api-utils";
+import Head from "next/head";
 
 import EventContent from "../../components/event-detail/event-content";
 import EventLogistics from "../../components/event-detail/event-logistics";
@@ -8,13 +9,16 @@ import LogisticsItem from "../../components/event-detail/logistics-item";
 
 function EventDetail(props) {
   const event = props.event;
-  console.log(event);
   if (!event) {
     return <h2>no event found</h2>;
   }
 
   return (
     <Fragment>
+      <Head>
+        <title>{event.title}</title>
+        <meta name="description" content={event.description} />
+      </Head>
       <EventSummary summary={event.title} />
       <EventLogistics
         date={event.date}
@@ -23,7 +27,7 @@ function EventDetail(props) {
         imageAlt={event.title}
       />
       <EventContent>
-        <p>{event.summary}</p>
+        <p>{event.description}</p>
       </EventContent>
     </Fragment>
   );

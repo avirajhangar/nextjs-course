@@ -1,6 +1,7 @@
 import Link from "next/link";
 import classes from "./event-item.module.css";
 import Button from "../ui/button";
+import Image from "next/image";
 
 function EventItem(props) {
   const { title, image, date, location, id } = props;
@@ -14,7 +15,9 @@ function EventItem(props) {
   const formattedAddress = location.replace(", ", "\n");
   return (
     <li className={classes.item}>
-      <img className={classes.bg} src={"/" + image} alt="" />
+      <Image src={"/" + image} alt="" width={340} height={160} />
+
+      {/* <img className={classes.bg} src={"/" + image} alt="" /> */}
       <div className={classes.details}>
         <div>
           <h2>{title}</h2>
